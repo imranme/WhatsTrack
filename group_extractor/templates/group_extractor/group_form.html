@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html>
 <head>
     <title>WhatsApp Group Extractor</title>
@@ -31,4 +31,40 @@
         </ul>
     {% endif %}
 </body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WhatsApp Group Extractor</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 40px auto; }
+        h1 { text-align: center; }
+        form { display: flex; flex-direction: column; gap: 10px; }
+        input[type="url"] { padding: 8px; font-size: 16px; }
+        button { padding: 10px; font-size: 16px; background-color: #25D366; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #128C7E; }
+        ul { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>WhatsApp Group Extractor</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Extract</button>
+    </form>
+
+    {% if link %}
+        <h2>Group: {{ link|slice:"-20:" }}</h2>
+        <h3>Numbers:</h3>
+        <ul>
+            {% for num in numbers %}
+                <li>{{ num }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
 </html>
+
