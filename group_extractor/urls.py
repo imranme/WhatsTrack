@@ -1,6 +1,8 @@
+# group_extractor/urls.py
 from django.urls import path
-from .views import group_input_view
+from . import views
 
 urlpatterns = [
-    path('', group_input_view, name='group_input'),
+    path('', views.group_input_view, name='group_input'),
+    path('api/save-members/', views.save_members_api, name='save_members_api'),
 ]
